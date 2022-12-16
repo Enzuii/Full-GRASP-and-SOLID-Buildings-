@@ -4,7 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using ClassLibrary;
+using Full_GRASP_And_SOLID.Library;
 using NUnit.Framework;
 
 namespace Tests
@@ -16,40 +16,23 @@ namespace Tests
     public class TrainTests
     {
         /// <summary>
-        /// El tren para probar.
-        /// </summary>
-        private Train train;
-
-        /// <summary>
-        /// Crea un tren para probar.
-        /// </summary>
-        [SetUp]
-        public void Setup()
-        {
-            this.train = new Train();
-        }
-
-        /// <summary>
-        /// Prueba que el tren arranque.
+        /// Prueba del método <see cref="Train.GetTotalCost"/>.
         /// </summary>
         [Test]
-        public void StartTrainTest()
+        public void GetTotalCostTest()
         {
-            Assert.NotNull(this.train);
-            this.train.StartEngines();
-            Assert.True(this.train.IsEngineStarted);
-        }
+            // Arrange
+            Train train = new Train();
+            Step step1 = new Step(1, "Step 1", 10, 10);
+            Step step2 = new Step(2, "Step 2", 20, 20);
+            train.AddStep(step1);
+            train.AddStep(step2);
 
-        /// <summary>
-        /// Prueba que el tren se detenga.
-        /// </summary>
-        [Test]
-        public void StopTrainTest()
-        {
-            Assert.NotNull(this.train);
-            this.train.StartEngines();
-            this.train.StopEngines();
-            Assert.False(this.train.IsEngineStarted);
+            // Act
+            double totalCost = train.GetTotalCost();
+
+            // Assert
+            Assert.AreEqual(600, totalCost);
         }
     }
 } */

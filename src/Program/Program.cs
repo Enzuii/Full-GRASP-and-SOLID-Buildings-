@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Full_GRASP_And_SOLID.Library;
 
@@ -22,11 +23,19 @@ namespace Full_GRASP_And_SOLID
             PopulateCatalogs();
 
             Building tower = new Building("Tower");
-            ConsolePrinter imprimir = new ConsolePrinter();
+            IPrinter imprimirEnConsola = new ConsolePrinter();
+            IPrinter imprimirEnTxt = new FilePrinter();
             tower.AddTask(new Task(GetProduct("Cemento"), 100, GetEquipment("Hormigonera"), 120));
             tower.AddTask(new Task(GetProduct("Arena"), 200, GetEquipment("Hormigonera"), 120));
             tower.AddTask(new Task(GetProduct("Tabla"), 50, GetEquipment("Martillo"), 15));
-            imprimir.PrintBuilding(tower);
+
+            List<IPrinter> printers = new List<IPrinter>();
+            printers.Add(imprimirEnConsola);
+            printers.Add(imprimirEnTxt);
+            foreach (IPrinter printer in printers)
+            {
+                printer.PrintBuilding(tower);
+            }
         }
 
         private static void PopulateCatalogs()
