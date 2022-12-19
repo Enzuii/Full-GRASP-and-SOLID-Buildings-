@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace Full_GRASP_And_SOLID.Library
 {
-    public class Building
+    public class Building : IStringConverter
     {
         public ArrayList tasks = new ArrayList();
 
@@ -20,8 +20,9 @@ namespace Full_GRASP_And_SOLID.Library
 
         public string Description { get; set; }
 
-        public void AddTask(Task task)
+        public void AddTask(Supply material, double quantity, Tool equipment, int time)
         {
+            Task task = new Task(material, quantity, equipment, time);
             this.tasks.Add(task);
         }
 
@@ -44,9 +45,6 @@ namespace Full_GRASP_And_SOLID.Library
             return totalCost;
         
         }
-
-        
-
         public string PrintBuilding()
         {
             string printBuilding = "";

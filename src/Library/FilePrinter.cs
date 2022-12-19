@@ -6,9 +6,9 @@ namespace Full_GRASP_And_SOLID.Library
     public class FilePrinter : IPrinter
     {
         //Principio SRP, se usa el patrón de única responsabilidad
-        public void PrintBuilding(Building building)
+        public void Print(IStringConverter stringConverter)
         {
-            File.WriteAllText("Building.txt", building.PrintBuilding());
+            File.WriteAllText("Building.txt", stringConverter.PrintBuilding());
         }
     }
 }

@@ -25,16 +25,16 @@ namespace Full_GRASP_And_SOLID
             Building tower = new Building("Tower");
             IPrinter imprimirEnConsola = new ConsolePrinter();
             IPrinter imprimirEnTxt = new FilePrinter();
-            tower.AddTask(new Task(GetProduct("Cemento"), 100, GetEquipment("Hormigonera"), 120));
-            tower.AddTask(new Task(GetProduct("Arena"), 200, GetEquipment("Hormigonera"), 120));
-            tower.AddTask(new Task(GetProduct("Tabla"), 50, GetEquipment("Martillo"), 15));
+            tower.AddTask(GetProduct("Cemento"), 100, GetEquipment("Hormigonera"), 120);
+            tower.AddTask(GetProduct("Arena"), 200, GetEquipment("Hormigonera"), 120);
+            tower.AddTask(GetProduct("Tabla"), 50, GetEquipment("Martillo"), 15);
 
             List<IPrinter> printers = new List<IPrinter>();
             printers.Add(imprimirEnConsola);
             printers.Add(imprimirEnTxt);
             foreach (IPrinter printer in printers)
             {
-                printer.PrintBuilding(tower);
+                printer.Print(tower);
             }
         }
 

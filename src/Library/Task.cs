@@ -20,8 +20,9 @@ namespace Full_GRASP_And_SOLID.Library
 
         public double Quantity { get; set; }
 
+        public Tool Equipment { get; set; }
+        
         public int Time { get; set; }
 
-        public Tool Equipment { get; set; }
     }
 }
